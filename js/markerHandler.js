@@ -4,7 +4,7 @@ AFRAME.registerComponent("marker-handler",{
     init:async function(){
 
         if (uid === null) {
-            this.askTableNumber();
+            this.askuid();
           }
 
         var toys = await this.getToys();
@@ -19,7 +19,7 @@ AFRAME.registerComponent("marker-handler",{
           });
     },
 
-    askTableNumber: function() {
+    askuid: function() {
         var iconUrl = "https://raw.githubusercontent.com/whitehatjr/menu-card-app/main/hunger.png";
         
         swal({
@@ -35,7 +35,7 @@ AFRAME.registerComponent("marker-handler",{
           },
           closeOnClickOutside: false,
         }).then(inputValue=>{
-          tableNumber= inputValue
+          uid= inputValue
         })
         
       },
