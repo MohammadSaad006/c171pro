@@ -1,6 +1,11 @@
+var uid=null;
 AFRAME.registerComponent("marker-handler",{
 
     init:async function(){
+
+        if (tableNumber === null) {
+            this.askTableNumber();
+          }
 
         var toys = await this.getToys();
 
@@ -13,6 +18,27 @@ AFRAME.registerComponent("marker-handler",{
             this.handleMarkerLost();
           });
     },
+
+    askTableNumber: function() {
+        var iconUrl = "https://raw.githubusercontent.com/whitehatjr/menu-card-app/main/hunger.png";
+        
+        swal({
+          title:"Welcome to Toy Shop!!",
+          icon: iconUrl,
+          content: {
+            element: "input",
+            attributes: {
+              placeholder: "Type your uid EX:(U01)",
+              type: "number",
+              min: 1
+            }
+          },
+          closeOnClickOutside: false,
+        }).then(inputValue=>{
+          tableNumber= inputValue
+        })
+        
+      },
 
     handleMarkerFound:function(){
         var buttonDiv=document.getElementById("button-div")
