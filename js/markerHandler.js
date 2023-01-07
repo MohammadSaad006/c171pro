@@ -3,7 +3,7 @@ AFRAME.registerComponent("marker-handler",{
 
     init:async function(){
 
-        if (tableNumber === null) {
+        if (uid === null) {
             this.askTableNumber();
           }
 
